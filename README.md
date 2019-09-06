@@ -8,6 +8,7 @@ git clone https://github.com/stdogpkg/cukuramoto/ && cd cukuramoto && python set
 
 ```python
 import igraph as ig
+import numpy as np
 from stdog.utils.misc import ig2sparse 
 
 block_size=1024 # gpu parameter
@@ -45,6 +46,7 @@ order_parameter_list = order_parameter_list.reshape(num_couplings, num_temps)
 r = np.mean(order_parameter_list, axis=1)
 stdr = np.std(order_parameter_list, axis=1)
    
+import matplotlib.pyplot as plt
 plt.ion()
 fig, ax1 = plt.subplots()
 ax1.plot(couplings,r,'.-')
