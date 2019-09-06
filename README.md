@@ -1,0 +1,42 @@
+# Install
+
+```bash
+git clone https://github.com/stdogpkg/cukuramoto/ && cd cukuramoto && python setup.py install
+```
+
+# Running
+
+```python
+import igraph as ig
+from stdog.utils.misc import ig2sparse 
+
+block_size=1024 # gpu parameter
+
+num_couplings = 40
+N = 10000
+
+G = ig.Graph.Erdos_Renyi(N, 3/N)
+adj = ig2sparse(G)
+adj = adj.tocsr()
+ptr, indices = adj.indptr, adj.indices
+
+
+couplings = np.linspace(0, 4, num_couplings).astype("float32")
+omegas = np.tan(( np.arange(1,N+1)*np.pi)/N - ((N+1.)*np.pi)/(2.0*N)  ).astype("float32")
+phases = np.random.uniform(-np.pi, np.pi, int(num_couplings*N)).astype("float32")
+```
+
+```python
+import cukuramoto
+
+dt = 0.1
+num_temps = 100
+
+simulation = cukuramoto.Heuns(
+    N, num_couplings, block_size, omegas, phases, couplings, order_parameter, 
+    indices, ptr)
+
+simulation.heuns(num_temps, dt)
+order_parameter_list = simulation.get_order_parameter(num_temps, dt)
+
+```
