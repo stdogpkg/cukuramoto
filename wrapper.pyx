@@ -30,7 +30,6 @@ cdef class Heuns:
     def __cinit__(
             self,
             int num_oscilators, int num_couplings,
-            int num_indices, int num_ptr,
             int block_size,
             np.ndarray[ndim=1, dtype=np.float32_t] omegas, 
             np.ndarray[ndim=1, dtype=np.float32_t] phases, 
@@ -41,7 +40,8 @@ cdef class Heuns:
         ):
         self.num_oscilators_all = num_oscilators*num_couplings
         self.num_couplings = num_couplings
-
+        int num_indices = len(num_indices)
+        int num_ptr = len(num_ptr)
         self.cpp_heuns = new Cpp_Heuns(
             num_oscilators, num_couplings,
             num_indices, num_ptr,
