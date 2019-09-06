@@ -40,8 +40,8 @@ cdef class Heuns:
         ):
         self.num_oscilators_all = num_oscilators*num_couplings
         self.num_couplings = num_couplings
-        int num_indices = len(num_indices)
-        int num_ptr = len(num_ptr)
+        int num_indices = len(indices)
+        int num_ptr = len(ptr)
         self.cpp_heuns = new Cpp_Heuns(
             num_oscilators, num_couplings,
             num_indices, num_ptr,
