@@ -37,5 +37,20 @@ simulation = cukuramoto.Heuns(
 
 simulation.heuns(num_temps, dt)
 order_parameter_list = simulation.get_order_parameter(num_temps, dt)
-
 ```
+
+```python
+order_parameter_list = order_parameter_list.reshape(num_couplings, num_temps)
+    
+r = np.mean(order_parameter_list, axis=1)
+stdr = np.std(order_parameter_list, axis=1)
+   
+plt.ion()
+fig, ax1 = plt.subplots()
+ax1.plot(couplings,r,'.-')
+ax2 = ax1.twinx()
+ax2.plot(couplings,stdr,'r.-')
+plt.show()
+```
+
+![](img.png)
