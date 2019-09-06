@@ -9,7 +9,7 @@ cdef extern from "src/manager.hh":
             int, int,
             int, int,
             int,
-            np.float32_t*,  np.float32_t*,np.float32_t*,np.float32_t*,
+            np.float32_t*,  np.float32_t*,np.float32_t*,
             np.int32_t*,np.int32_t*
             
         )
@@ -29,27 +29,25 @@ cdef class Heuns:
 
     def __cinit__(
             self,
-            int num_oscilators, int num_couplings,
+            int num_oscilators,
             int block_size,
             np.ndarray[ndim=1, dtype=np.float32_t] omegas, 
             np.ndarray[ndim=1, dtype=np.float32_t] phases, 
             np.ndarray[ndim=1, dtype=np.float32_t] couplings, 
-            np.ndarray[ndim=1, dtype=np.float32_t] order_parameter,
             np.ndarray[ndim=1, dtype=np.int32_t] indices,
             np.ndarray[ndim=1, dtype=np.int32_t] ptr
         ):
-        self.num_oscilators_all = num_oscilators*num_couplings
-        self.num_couplings = num_couplings
+        self.num_oscilators_all = num_oscilators*len(couplings)
+        self.num_couplings = len(couplings)
         cdef int num_indices = len(indices)
         cdef int num_ptr = len(ptr)
         self.cpp_heuns = new Cpp_Heuns(
-            num_oscilators, num_couplings,
+            num_oscilators, self.num_couplings,
             num_indices, num_ptr,
             block_size,
             &omegas[0], 
             &phases[0], 
             &couplings[0], 
-            &order_parameter[0],
             &indices[0],
             &ptr[0]
         )

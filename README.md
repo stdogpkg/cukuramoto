@@ -31,9 +31,8 @@ import cukuramoto
 
 dt = 0.1
 num_temps = 100
-
 simulation = cukuramoto.Heuns(
-    N, num_couplings, block_size, omegas, phases, couplings, order_parameter, 
+    N, block_size, omegas, phases, couplings, 
     indices, ptr)
 
 simulation.heuns(num_temps, dt)

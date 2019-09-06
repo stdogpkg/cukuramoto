@@ -24,7 +24,7 @@ Heuns::Heuns (
     int num_indices_, int num_ptr_,
     int block_size_,
     float *omegas_host, float *phases_host, 
-    float *couplings_host, float *order_parameter_host,
+    float *couplings_host,
     int* indices_host, int* ptr_host
   ) {
 

@@ -24,7 +24,7 @@ public:
       int num_oscilators, int num_couplings,
       int num_indices, int num_ptr,
       int block_size,
-      float *omegas, float *phases, float *couplings, float *order_parameter,
+      float *omegas, float *phases, float *couplings,
       int *indices, int *ptr
   );
 
