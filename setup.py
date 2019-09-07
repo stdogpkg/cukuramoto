@@ -134,7 +134,7 @@ with open("README.md", "r") as f:
 
 setup(
     name = 'cukuramoto',
-    version = '1.0.0',
+    version = 'v1.0.0',
     ext_modules = [ext],
     # Inject our custom trigger
     cmdclass = {'build_ext': custom_build_ext},
@@ -149,7 +149,7 @@ setup(
     author="Bruno Messias; Thomas K. Peron",
     download_url="https://github.com/stdogpkg/cukuramoto/archive/v1.0.0.tar.gz", 
     keywords=[
-        "gpu", "science", "complex-networks", "graphs", "dynamics",
+        "cuda", "science", "complex-networks", "graphs", "dynamics",
          "tensorflow", "kuramoto"
     ],
     classifiers=[

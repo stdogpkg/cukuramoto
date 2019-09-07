@@ -1,0 +1,6 @@
+%%writefile cukuramoto/MANIFEST.in
+recursive-include src/ *
+include *.pxd
+include *.pyx
+include README.md
+include img.png
