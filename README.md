@@ -1,7 +1,7 @@
 # Install
 
 ```bash
-git clone https://github.com/stdogpkg/cukuramoto/ && cd cukuramoto && python setup.py install
+pip install cukuramoto
 ```
 
 # Running
